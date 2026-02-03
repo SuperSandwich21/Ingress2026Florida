@@ -1,0 +1,79 @@
+Here is a **clean “text tile” version** you can keep handy. Think of it as a pocket card.
+
+---
+
+**PowerShell Commands for Your Website (GitHub + Render)**
+
+**Go to site folder**
+
+```
+cd "D:\Outer System\Ingress\IngressWeekly"
+```
+
+**Check status**
+
+```
+git status
+```
+
+**See changes**
+
+```
+git diff
+```
+
+**Add files**
+
+```
+git add .
+```
+
+**Save changes**
+
+```
+git commit -m "Update weekly report"
+```
+
+**Publish (triggers Render)**
+
+```
+git push
+```
+
+**Check latest version**
+
+```
+git log -1 --oneline
+```
+
+**Fix a file**
+
+```
+git add filename.html
+git commit -m "Fix report"
+git push
+```
+
+**Preview locally**
+
+```
+start index.html
+```
+
+**Emergency reset (use carefully)**
+
+```
+git fetch origin
+git reset --hard origin/main
+```
+
+---
+
+**Weekly flow**
+Edit → add → commit → push → wait → live
+
+If you want, I can:
+
+* Compress this into a **one-line ultra-minimal tile**
+* Turn it into a **printable cheat card**
+* Make a **“what command do I run now?” decision tile**
