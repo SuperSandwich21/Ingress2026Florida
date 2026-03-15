@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>26-02-04 KamilusRaidsNSB</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/replay-player.css">
+</head>
+<body>
+  <div id="map"></div>
+  <div id="title"><strong id="titleText">26-02-04 KamilusRaidsNSB</strong></div>
+  <div id="hud">
+    <button id="btnPlay" class="btn">Play</button>
+    <button id="btnPause" class="btn secondary">Pause</button>
+    <button id="btnReset" class="btn secondary">Reset</button>
+    <label>Speed
+      <select id="speed">
+        <option value="0.5">0.5x</option>
+        <option value="1" selected>1x</option>
+        <option value="2">2x</option>
+        <option value="5">5x</option>
+        <option value="10">10x</option>
+      </select>
+    </label>
+    <input id="timeline" type="range" min="0" max="100" value="0" step="1">
+    <div id="clock">--</div>
+    <div id="playersLegend" class="player-legend"></div>
+  </div>
+  <script id="replay-config" type="application/json">{"title":"26-02-04 KamilusRaidsNSB","replayDataPath":"data/replay_1_26-02-04-KamilusRaidsNSB.json","iconsPath":"assets/icons.json"}</script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/replay-player.js"></script>
+</body>
+</html>
