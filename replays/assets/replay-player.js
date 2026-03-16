@@ -33,6 +33,15 @@
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : fallback;
   };
+  const initialsFor = (value) => String(value || '?')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0))
+    .join('')
+    .toUpperCase()
+    .slice(0, 2) || '?';
   const fmtDist = (km) => {
     const value = Number(km);
     if (!Number.isFinite(value)) return '0.00 km';
@@ -65,8 +74,10 @@
     const icons = (iconManifest && iconManifest.icons) ? iconManifest.icons : {};
     const effects = (iconManifest && iconManifest.effects) ? iconManifest.effects : {};
     const playerStates = [];
-    let minTs = Number.POSITIVE_INFINITY;
-    let maxTs = Number.NEGATIVE_INFINITY;
+    const savedStartTs = parseTs(data.start_time);
+    const savedEndTs = parseTs(data.end_time);
+    let minTs = Number.isFinite(savedStartTs) ? savedStartTs : Number.POSITIVE_INFINITY;
+    let maxTs = Number.isFinite(savedEndTs) ? savedEndTs : Number.NEGATIVE_INFINITY;
     const allLatLng = [];
     const effectLayer = L.layerGroup().addTo(map);
     let lastEffectTs = null;
@@ -78,6 +89,8 @@
       const parts = [0, 2, 4].map((offset) => Math.max(0, Math.min(255, parseInt(full.slice(offset, offset + 2), 16) || 0)));
       return '#' + parts.map((value) => Math.max(0, Math.floor(value * 0.72)).toString(16).padStart(2, '0')).join('');
     };
+    const iconImgOnError = "this.style.display='none';var f=this.parentNode&&this.parentNode.querySelector('.marker-fallback');if(f){f.style.display='flex';}";
+    const badgeImgOnError = "this.style.display='none';var f=this.parentNode&&this.parentNode.querySelector('.badge-fallback');if(f){f.style.display='inline-flex';}";
     const makeIcon = (player) => {
       const iconMeta = player.icon_key ? icons[player.icon_key] : null;
       const imgSrc = iconMeta ? (iconMeta.data_uri || iconMeta.source_url || '') : '';
@@ -85,11 +98,11 @@
       const border = darkenColor(color);
       const size = 36;
       const fontSize = Math.max(10, Math.round(size * 0.39));
-      const initials = String(player.name || '?').substring(0, 2).toUpperCase();
+      const initials = initialsFor(player.name || '?');
       if (imgSrc) {
         return L.divIcon({
           className: 'replay-player-marker',
-          html: '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background-color:'+color+';border:2px solid '+border+';overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:'+fontSize+'px;text-shadow:1px 1px 2px rgba(0,0,0,0.5);box-shadow:0 2px 5px rgba(0,0,0,0.35)"><img src="'+imgSrc+'" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;position:absolute;top:0;left:0;"></div>',
+          html: '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background-color:'+color+';border:2px solid '+border+';overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:'+fontSize+'px;text-shadow:1px 1px 2px rgba(0,0,0,0.5);box-shadow:0 2px 5px rgba(0,0,0,0.35)"><img src="'+imgSrc+'" alt="" onerror="'+iconImgOnError+'" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;position:absolute;top:0;left:0;"><span class="marker-fallback" style="display:none;align-items:center;justify-content:center;position:absolute;inset:0;">'+esc(initials)+'</span></div>',
           iconSize: [size, size],
           iconAnchor: [size / 2, size / 2]
         });
@@ -254,6 +267,24 @@
       minTs = Math.min(minTs, events[0]._t);
       maxTs = Math.max(maxTs, events[events.length - 1]._t);
       const paths = Array.isArray(player.paths) ? player.paths : [];
+      paths.forEach((segment) => {
+        if (!segment || typeof segment !== 'object') return;
+        const fromTimeMs = Number(segment.effectiveFromTimeMs != null ? segment.effectiveFromTimeMs : segment.fromTimeMs);
+        const toTimeMs = Number(segment.toTimeMs);
+        const movementEndTimeMs = Number(segment.movementEndTimeMs != null ? segment.movementEndTimeMs : toTimeMs);
+        if (Number.isFinite(fromTimeMs)) {
+          minTs = Math.min(minTs, fromTimeMs);
+          maxTs = Math.max(maxTs, fromTimeMs);
+        }
+        if (Number.isFinite(toTimeMs)) {
+          minTs = Math.min(minTs, toTimeMs);
+          maxTs = Math.max(maxTs, toTimeMs);
+        }
+        if (Number.isFinite(movementEndTimeMs)) {
+          minTs = Math.min(minTs, movementEndTimeMs);
+          maxTs = Math.max(maxTs, movementEndTimeMs);
+        }
+      });
       const latlngs = paths.length
         ? paths.flatMap((segment) => Array.isArray(segment && segment.path) ? segment.path.map((pt) => [Number(pt[0]), Number(pt[1])]) : [])
         : events.map(e => [Number(e.portal_lat), Number(e.portal_lng)]);
@@ -270,13 +301,37 @@
       if (clockEl) clockEl.textContent = 'No replay data';
       return;
     }
+    if (!Number.isFinite(minTs) || !Number.isFinite(maxTs) || maxTs < minTs) {
+      if (clockEl) clockEl.textContent = 'Replay time range unavailable';
+      return;
+    }
     if (allLatLng.length) {
       map.fitBounds(L.latLngBounds(allLatLng), { padding: [24, 24] });
     }
     if (legendEl) {
-      legendEl.innerHTML = playerStates.map(ps =>
-        '<span><span class="player-dot" style="background:'+ (ps.player.color || '#fff') +'"></span>'+ (ps.player.name || 'Player') +'</span>'
-      ).join('');
+      const renderLegendItems = (rows) => rows.map((ps) => {
+        const player = ps.player || {};
+        const iconMeta = player.icon_key ? icons[player.icon_key] : null;
+        const imgSrc = iconMeta ? (iconMeta.data_uri || iconMeta.source_url || '') : '';
+        const color = player.color || '#888888';
+        const border = darkenColor(color);
+        const initials = initialsFor(player.name || 'Player');
+        const badge = imgSrc
+          ? '<span class="player-badge" style="background:'+color+';border-color:'+border+';"><img src="'+imgSrc+'" alt="" onerror="'+badgeImgOnError+'"><span class="badge-fallback" style="display:none;align-items:center;justify-content:center;position:absolute;inset:0;">'+esc(initials)+'</span></span>'
+          : '<span class="player-badge" style="background:'+color+';border-color:'+border+';">'+esc(initials)+'</span>';
+        return '<span class="player-legend-item">' + badge + '<span class="player-name">' + esc(player.name || 'Player') + '</span></span>';
+      }).join('');
+      const enlightened = playerStates.filter((ps) => String(ps.player && ps.player.team || '').toUpperCase() === 'E');
+      const resistance = playerStates.filter((ps) => String(ps.player && ps.player.team || '').toUpperCase() === 'R');
+      legendEl.innerHTML = ''
+        + '<div class="player-legend-column left">'
+        + '<div class="player-legend-title enl">Enlightened</div>'
+        + '<div class="player-legend-list">' + (renderLegendItems(enlightened) || '<span class="player-name">None</span>') + '</div>'
+        + '</div>'
+        + '<div class="player-legend-column right">'
+        + '<div class="player-legend-title res">Resistance</div>'
+        + '<div class="player-legend-list">' + (renderLegendItems(resistance) || '<span class="player-name">None</span>') + '</div>'
+        + '</div>';
     }
 
     let playing = false;

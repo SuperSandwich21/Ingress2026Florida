@@ -11,8 +11,19 @@ body { font-family: Arial, sans-serif; background: #111; color: #f5f5f5; }
 .btn.secondary { background: #444; }
 #timeline { flex: 1 1 320px; }
 #clock { min-width: 185px; font-weight: 600; text-align: right; }
-.player-legend { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; opacity: 0.95; }
-.player-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; border: 1px solid rgba(255,255,255,0.35); }
+.player-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; font-size: 12px; opacity: 0.95; align-items: start; }
+.player-legend-column { min-width: 0; }
+.player-legend-column.left { text-align: left; }
+.player-legend-column.right { text-align: right; }
+.player-legend-title { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+.player-legend-title.enl { color: #9fd8a3; }
+.player-legend-title.res { color: #a7c9ff; }
+.player-legend-list { display: flex; flex-direction: column; gap: 5px; }
+.player-legend-item { display: inline-flex; align-items: center; gap: 7px; }
+.player-legend-column.right .player-legend-item { justify-content: flex-end; }
+.player-badge { width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: 700; text-shadow: 1px 1px 1px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.22); flex: 0 0 22px; overflow: hidden; }
+.player-badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.player-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .leaflet-control-attribution { background: rgba(0,0,0,0.55); color: #ddd; }
 #debrief {
   position: absolute;
