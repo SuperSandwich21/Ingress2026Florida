@@ -13,3 +13,41 @@ body { font-family: Arial, sans-serif; background: #111; color: #f5f5f5; }
 #clock { min-width: 185px; font-weight: 600; text-align: right; }
 .player-legend { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; opacity: 0.95; }
 .player-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; border: 1px solid rgba(255,255,255,0.35); }
+.leaflet-control-attribution { background: rgba(0,0,0,0.55); color: #ddd; }
+#debrief {
+  position: absolute;
+  inset: 0;
+  z-index: 1100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 10, 14, 0.9);
+  padding: 24px;
+  box-sizing: border-box;
+}
+#debriefCard {
+  width: min(960px, 96vw);
+  max-height: 92vh;
+  overflow: auto;
+  background: #10161d;
+  color: #f3f1eb;
+  border: 1px solid #3b4e62;
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.4);
+  padding: 22px;
+}
+.debrief-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
+.debrief-header h2 { margin: 0; font-size: 26px; }
+.debrief-subtitle { color: #b9c6d2; font-size: 13px; margin-top: 6px; }
+.debrief-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 14px 0 18px; }
+.debrief-stat { background: #16202a; border: 1px solid #28394b; border-radius: 10px; padding: 12px; }
+.debrief-stat-label { font-size: 12px; color: #a7b5c2; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+.debrief-stat-value { font-size: 22px; font-weight: 700; }
+.debrief-section-title { font-size: 16px; margin: 18px 0 10px; color: #d8e2eb; }
+.debrief-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.debrief-table th, .debrief-table td { padding: 8px 10px; border-bottom: 1px solid #243241; text-align: left; }
+.debrief-table th { color: #aab9c6; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+.debrief-tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.debrief-tag.E { background: rgba(65, 130, 73, 0.22); color: #9fd8a3; }
+.debrief-tag.R { background: rgba(73, 114, 171, 0.22); color: #a7c9ff; }
+.debrief-tag.N { background: rgba(178, 146, 78, 0.22); color: #e7c887; }
