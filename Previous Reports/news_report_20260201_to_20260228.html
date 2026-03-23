@@ -2,90 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Battle Report</title>
+  <title>26-02 Monthly Report</title>
   <style>
-    @page { size: Letter; margin: 0.5in; }
-    body { margin: 0; font-family: 'Times New Roman', serif; color: #2f2416; background: #e8dbc4; }
-    .page { width: 8.5in; height: 11in; box-sizing: border-box; padding: 0.35in; background: #f7efe1; }
-    h1 { margin: 0; font-size: 26px; }
-    h2 { margin: 10px 0 6px 0; font-size: 17px; border-bottom: 1px solid #8b5a2b; }
-    .meta { font-size: 13px; margin-top: 4px; }
-    .ranking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    table { width: 100%; border-collapse: collapse; font-size: 11px; }
-    .combined-faction-chart-wrap { border:1px solid #8b5a2b; background:#fdf9f2; padding:1px; width:100%; height:128px; min-height:128px; max-height:128px; overflow:hidden; }
+    @page { size: Letter; margin: 0.45in; }
+    body { margin: 0; color: #18130c; background: #cdbd9e; font-family: Georgia, 'Times New Roman', serif; }
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      box-sizing: border-box;
+      padding: 0.28in 0.34in 0.32in;
+      background:
+        linear-gradient(rgba(71, 52, 28, 0.035), rgba(71, 52, 28, 0.035)),
+        radial-gradient(circle at top, rgba(255,255,255,0.26), rgba(0,0,0,0) 38%),
+        #f2e6c8;
+      box-shadow: inset 0 0 0 1px #6d5738;
+    }
+    .masthead {
+      border-top: 4px double #1f1810;
+      border-bottom: 4px double #1f1810;
+      padding: 8px 0 10px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .masthead-kicker { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; }
+    .masthead-title { font-size: 38px; line-height: 1; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 4px 0; }
+    .masthead-subtitle { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .report-heading {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+    .report-deck {
+      margin: 0 0 12px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #3f301d;
+      padding-bottom: 8px;
+    }
+    .report-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 11px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #3f301d;
+      border-top: 1px solid #3f301d;
+      padding: 4px 0;
+      margin-bottom: 12px;
+    }
+    .news-grid { display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 14px; }
+    .news-section { break-inside: avoid; }
+    .section-head {
+      margin: 0 0 8px;
+      border-top: 2px solid #20180f;
+      border-bottom: 1px solid #20180f;
+      padding: 3px 0 4px;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .sidebar-block { margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; background: rgba(255,255,255,0.2); }
+    th, td { border: 1px solid #5d482f; padding: 5px 6px; }
+    th { background: #dac79f; text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px; }
+    .ranking-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .combined-faction-chart-wrap { border:1px solid #5d482f; background:#fbf6ea; padding:1px; width:100%; height:160px; min-height:160px; max-height:160px; overflow:hidden; }
     .combined-faction-chart-wrap svg { width:100%; height:100%; display:block; }
+    .footer-wide-section { margin-top: 14px; }
+    .watch-replays ul { margin: 0; padding-left: 18px; }
+    .watch-replays li { margin-bottom: 6px; }
+    a { color: #2f4d79; }
   </style>
 </head>
 <body>
   <div class="page">
-    <h1>26-02 Monthly Report</h1>
-    <div class="meta"><strong>Time period:</strong> 2026: 02-01 to 02-28</div>
-    <div class="meta"><strong>Sectors:</strong> AM03-KILO-07, AM03-KILO-02, AM03-KILO-00, AM03-KILO-15, AM03-KILO-14, AM03-KILO-01</div>
-    <div class="meta" style="margin-top:6px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;">
-        <div>
-          <div style="font-weight:700;">Weekly Reports</div>
-          <ul style="margin:4px 0 0 18px;padding:0;">
-            <li style='margin-bottom:2px;'><a href='battle_report_20260204_to_20260211.html' style='color:#2f6fb5;text-decoration:underline;'>2026: 02-04 to 02-11</a></li><li style='margin-bottom:2px;'><a href='battle_report_20260126_to_20260203.html' style='color:#2f6fb5;text-decoration:underline;'>2026: 01-26 to 02-03</a></li>
-          </ul>
-        </div>
-        <div>
-          <div style="font-weight:700;">Monthly Reports</div>
-          <ul style="margin:4px 0 0 18px;padding:0;">
-            <li style='margin-bottom:2px;color:#6b4423;'>No previous monthly reports found.</li>
-          </ul>
-        </div>
+    <div class="masthead">
+      <div class="masthead-kicker">Field Dispatch and Statistical Edition</div>
+      <div class="masthead-title">Three Sided News</div>
+      <div class="masthead-subtitle">Our anchors linking you to all developments from all angles.</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px;">
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;">
+        <a href='monthly_news_report_20260201_to_20260228.html' title='Previous report' style='display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid #8b5a2b;border-radius:999px;background:#efe4cf;color:#3d2817;text-decoration:none;font-size:20px;font-weight:700;'>&larr;</a>
+        <span style="font-size:12px;font-weight:700;color:#6b4423;text-transform:uppercase;letter-spacing:0.08em;">Previous Issue</span>
+      </div>
+      <div style="flex:1 1 auto;text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;">Vol. 1 &nbsp; No. 3</div>
+      <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;font-weight:700;color:#6b4423;text-transform:uppercase;letter-spacing:0.08em;">Next Issue</span>
+        <a href='news_report_20260204_to_20260211.html' title='Next report' style='display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid #8b5a2b;border-radius:999px;background:#efe4cf;color:#3d2817;text-decoration:none;font-size:20px;font-weight:700;'>&rarr;</a>
       </div>
     </div>
-
-    <h2>Faction Summary</h2>
-    <table style="margin-top: 8px;">
-      <thead>
-        <tr>
-          <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;text-align:left;">Faction</th>
-          <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Active Players</th>
-          <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Total MU</th>
-          <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Portal Captures</th>
-          <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Enemy Captures</th>
-          <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Enemy Captures / Player</th>
-        </tr>
-      </thead>
-      <tbody><tr><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#dcefd9;font-weight:700;'>Enlightened</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>325</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>8,490,159</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>21,755</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>6,215</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>19.12</td></tr><tr><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#d4e1ef;font-weight:700;'>Resistance</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>254</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>15,685,533</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>16,186</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>5,916</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>23.29</td></tr><tr><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>Total</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>579</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>24,175,692</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>37,941</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>12,131</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>N/A</td></tr></tbody>
-    </table>
-
-    <h2>Ranking</h2>
-    <div class="ranking-grid">
-      <div>
-        <div style="font-size: 12px; margin-bottom: 6px;"><strong>Player / Total MU</strong></div>
-        <table>
+    <h1 class="report-heading">26-02 Monthly Report</h1>
+    <div class="report-deck">Compiled from the selected operations window with comparative faction statistics and rankings.</div>
+    <div class="report-meta">
+      <div><strong>Period:</strong> 2026: 02-01 to 02-28</div>
+      <div><strong>Sectors:</strong> AM03-KILO-07, AM03-KILO-02, AM03-KILO-00, AM03-KILO-15, AM03-KILO-14, AM03-KILO-01</div>
+      <div><strong>Edition:</strong> 26-02 Monthly Report</div>
+    </div>
+    <div class="news-grid">
+      <div class="news-section">
+        <h2 class="section-head">Faction Ledger</h2>
+        <table style="margin-top: 8px;">
           <thead>
             <tr>
-              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">#</th>
-              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;text-align:left;">Player</th>
-              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Value</th>
+              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;text-align:left;">Faction</th>
+              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Active Players</th>
+              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Total MU</th>
+              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Portal Captures</th>
+              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Enemy Captures</th>
+              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Enemy Captures / Player</th>
             </tr>
           </thead>
-          <tbody><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>TotoWanderer</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>8897162 (36.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>2</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>biowandwerer</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>4534153 (18.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>3</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>Dazanar</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>3464715 (14.3%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>4</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>DarthLayer</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>2235359 (9.2%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>5</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>spyfred</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>1051875 (4.4%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>6</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>Tr1ggerWarning</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>535015 (2.2%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>7</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>SnakeDoctorJK</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>423473 (1.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>8</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>kbees1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>330330 (1.4%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>9</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>GreekBish</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>243082 (1.0%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>10</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>Knightsaint</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>219786 (0.9%)</td></tr></tbody>
+          <tbody><tr><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#dcefd9;font-weight:700;'>Enlightened</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>325</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>8,490,159</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>21,755</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>6,215</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>19.12</td></tr><tr><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#d4e1ef;font-weight:700;'>Resistance</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>254</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>15,685,533</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>16,186</td><td style='padding:5px 6px;border:1px solid #8b5a2b;'>5,916</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#f4d18e;color:#4b2d14;font-weight:700;'>23.29</td></tr><tr><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>Total</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>579</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>24,175,692</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>37,941</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>12,131</td><td style='padding:5px 6px;border:1px solid #8b5a2b;background:#efe4cf;font-weight:700;'>N/A</td></tr></tbody>
         </table>
       </div>
-      <div>
-        <div style="font-size: 12px; margin-bottom: 6px;"><strong>Player / Enemy Portal Captures</strong></div>
-        <table>
-          <thead>
-            <tr>
-              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">#</th>
-              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;text-align:left;">Player</th>
-              <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Value</th>
-            </tr>
-          </thead>
-          <tbody><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>SnakeDoctorJK</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>624 (5.1%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>2</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>ResGrenadier</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>297 (2.4%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>3</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>onekm</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>275 (2.3%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>4</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>Dazanar</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>263 (2.2%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>5</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>grendelwulf</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>257 (2.1%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>6</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>D3plorable1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>246 (2.0%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>7</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>MalleusVos</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>216 (1.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>8</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>spyfred</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>190 (1.6%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>9</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>kamilus83</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>189 (1.6%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>10</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>martinatime</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>186 (1.5%)</td></tr></tbody>
-        </table>
+      <div class="news-section">
+        <div class="sidebar-block">
+          <h2 class="section-head">Player Ranking</h2>
+          <div class="ranking-grid">
+            <div>
+              <div style="font-size: 12px; margin-bottom: 6px;"><strong>Player / MU Gained This Period</strong></div>
+              <table>
+                <thead>
+                  <tr>
+                    <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">#</th>
+                    <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;text-align:left;">Player</th>
+                    <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Value</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>TotoWanderer</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>8897162 (36.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>2</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>biowandwerer</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>4534153 (18.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>3</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>Dazanar</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>3464715 (14.3%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>4</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>DarthLayer</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>2235359 (9.2%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>5</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>spyfred</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>1051875 (4.4%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>6</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>Tr1ggerWarning</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>535015 (2.2%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>7</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>SnakeDoctorJK</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>423473 (1.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>8</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>kbees1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>330330 (1.4%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>9</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>GreekBish</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>243082 (1.0%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>10</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>Knightsaint</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>219786 (0.9%)</td></tr></tbody>
+              </table>
+            </div>
+            <div>
+              <div style="font-size: 12px; margin-bottom: 6px;"><strong>Player / Enemy Portal Captures</strong></div>
+              <table>
+                <thead>
+                  <tr>
+                    <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">#</th>
+                    <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;text-align:left;">Player</th>
+                    <th style="padding:5px 6px;border:1px solid #8b5a2b;background:#d9c9a8;">Value</th>
+                  </tr>
+                </thead>
+                <tbody><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>SnakeDoctorJK</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>624 (5.1%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>2</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>ResGrenadier</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>297 (2.4%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>3</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>onekm</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>275 (2.3%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>4</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>Dazanar</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>263 (2.2%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>5</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>grendelwulf</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>257 (2.1%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>6</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>D3plorable1</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>246 (2.0%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>7</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>MalleusVos</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>216 (1.8%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>8</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>spyfred</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>190 (1.6%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>9</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;'>kamilus83</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#dcefd9;text-align:center;'>189 (1.6%)</td></tr><tr><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>10</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;'>martinatime</td><td style='padding:4px 6px;border:1px solid #8b5a2b;background:#d4e1ef;text-align:center;'>186 (1.5%)</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
-
-    <h2>Combined Faction Activity <span style="font-size: 11px; font-weight: 400;">(Based on number of faction portals taken, not including Machina)</span></h2>
-    <div id="battleReportCombinedFactionChartContainer" class="combined-faction-chart-wrap"><svg id='battleReportCombinedFactionChart' width='100%' height='100%' viewBox='0 0 940 128' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg' style='display:block;'><rect x='0' y='0' width='940' height='128' fill='#fdf9f2'/><line x1='36' y1='100.0' x2='926' y2='100.0' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='77.5' x2='926' y2='77.5' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='55.0' x2='926' y2='55.0' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='32.5' x2='926' y2='32.5' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='10.0' x2='926' y2='10.0' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='10' x2='36' y2='100' stroke='#8b5a2b' stroke-width='1.5'/><line x1='36' y1='100' x2='926' y2='100' stroke='#8b5a2b' stroke-width='1.5'/><text x='28' y='104.0' text-anchor='end' font-size='10' fill='#6b4423'>0</text><text x='28' y='81.5' text-anchor='end' font-size='10' fill='#6b4423'>348</text><text x='28' y='59.0' text-anchor='end' font-size='10' fill='#6b4423'>695</text><text x='28' y='36.5' text-anchor='end' font-size='10' fill='#6b4423'>1042</text><text x='28' y='14.0' text-anchor='end' font-size='10' fill='#6b4423'>1390</text><text x='36.0' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>01-30</text><text x='36.0' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>F</text><text x='128.1' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-02</text><text x='128.1' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>M</text><text x='220.1' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-05</text><text x='220.1' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>Th</text><text x='312.2' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-08</text><text x='312.2' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>Su</text><text x='404.3' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-11</text><text x='404.3' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>W</text><text x='496.3' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-14</text><text x='496.3' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>S</text><text x='588.4' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-17</text><text x='588.4' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>T</text><text x='680.5' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-20</text><text x='680.5' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>F</text><text x='772.6' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-23</text><text x='772.6' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>M</text><text x='864.6' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-26</text><text x='864.6' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>Th</text><text x='926.0' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-28</text><text x='926.0' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>S</text><polyline points='36.0,75.9 66.7,66.0 97.4,78.8 128.1,78.9 158.8,61.0 189.4,83.9 220.1,65.8 250.8,81.6 281.5,56.6 312.2,70.7 342.9,62.1 373.6,60.7 404.3,69.1 435.0,51.9 465.7,48.0 496.3,66.5 527.0,62.9 557.7,29.2 588.4,44.2 619.1,57.0 649.8,56.6 680.5,76.2 711.2,24.6 741.9,43.3 772.6,71.6 803.2,70.8 833.9,76.6 864.6,72.7 895.3,75.1 926.0,56.7' fill='none' stroke='#2f6fb5' stroke-width='2'/><polyline points='36.0,59.1 66.7,52.3 97.4,62.2 128.1,62.1 158.8,71.3 189.4,74.8 220.1,56.4 250.8,63.5 281.5,46.6 312.2,68.9 342.9,70.6 373.6,66.3 404.3,61.1 435.0,44.9 465.7,34.2 496.3,25.0 527.0,24.4 557.7,43.6 588.4,37.1 619.1,32.5 649.8,12.1 680.5,30.9 711.2,24.4 741.9,10.0 772.6,69.5 803.2,70.3 833.9,61.9 864.6,62.8 895.3,50.9 926.0,51.4' fill='none' stroke='#2f8f4e' stroke-width='2'/><rect x='728' y='8' width='10' height='10' fill='#2f6fb5'/><text x='743' y='17' font-size='11' fill='#3d2817'>Resistance</text><rect x='818' y='8' width='10' height='10' fill='#2f8f4e'/><text x='833' y='17' font-size='11' fill='#3d2817'>Enlightened</text></svg></div>
+    <div class="footer-wide-section">
+      <h2 class="section-head">Combined Faction Activity</h2>
+      <div id="battleReportCombinedFactionChartContainer" class="combined-faction-chart-wrap"><svg id='battleReportCombinedFactionChart' width='100%' height='100%' viewBox='0 0 940 128' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg' style='display:block;'><rect x='0' y='0' width='940' height='128' fill='#fdf9f2'/><line x1='36' y1='100.0' x2='926' y2='100.0' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='77.5' x2='926' y2='77.5' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='55.0' x2='926' y2='55.0' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='32.5' x2='926' y2='32.5' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='10.0' x2='926' y2='10.0' stroke='#e6d7be' stroke-width='1'/><line x1='36' y1='10' x2='36' y2='100' stroke='#8b5a2b' stroke-width='1.5'/><line x1='36' y1='100' x2='926' y2='100' stroke='#8b5a2b' stroke-width='1.5'/><text x='28' y='104.0' text-anchor='end' font-size='10' fill='#6b4423'>0</text><text x='28' y='81.5' text-anchor='end' font-size='10' fill='#6b4423'>348</text><text x='28' y='59.0' text-anchor='end' font-size='10' fill='#6b4423'>695</text><text x='28' y='36.5' text-anchor='end' font-size='10' fill='#6b4423'>1042</text><text x='28' y='14.0' text-anchor='end' font-size='10' fill='#6b4423'>1390</text><text x='36.0' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>01-30</text><text x='36.0' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>F</text><text x='128.1' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-02</text><text x='128.1' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>M</text><text x='220.1' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-05</text><text x='220.1' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>Th</text><text x='312.2' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-08</text><text x='312.2' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>Su</text><text x='404.3' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-11</text><text x='404.3' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>W</text><text x='496.3' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-14</text><text x='496.3' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>S</text><text x='588.4' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-17</text><text x='588.4' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>T</text><text x='680.5' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-20</text><text x='680.5' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>F</text><text x='772.6' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-23</text><text x='772.6' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>M</text><text x='864.6' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-26</text><text x='864.6' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>Th</text><text x='926.0' y='111' text-anchor='middle' font-size='10' fill='#6b4423'>02-28</text><text x='926.0' y='120' text-anchor='middle' font-size='9' fill='#7a5a3a'>S</text><polyline points='36.0,75.9 66.7,66.0 97.4,78.8 128.1,78.9 158.8,61.0 189.4,83.9 220.1,65.8 250.8,81.6 281.5,56.6 312.2,70.7 342.9,62.1 373.6,60.7 404.3,69.1 435.0,51.9 465.7,48.0 496.3,66.5 527.0,62.9 557.7,29.2 588.4,44.2 619.1,57.0 649.8,56.6 680.5,76.2 711.2,24.6 741.9,43.3 772.6,71.6 803.2,70.8 833.9,76.6 864.6,72.7 895.3,75.1 926.0,56.7' fill='none' stroke='#2f6fb5' stroke-width='2'/><polyline points='36.0,59.1 66.7,52.3 97.4,62.2 128.1,62.1 158.8,71.3 189.4,74.8 220.1,56.4 250.8,63.5 281.5,46.6 312.2,68.9 342.9,70.6 373.6,66.3 404.3,61.1 435.0,44.9 465.7,34.2 496.3,25.0 527.0,24.4 557.7,43.6 588.4,37.1 619.1,32.5 649.8,12.1 680.5,30.9 711.2,24.4 741.9,10.0 772.6,69.5 803.2,70.3 833.9,61.9 864.6,62.8 895.3,50.9 926.0,51.4' fill='none' stroke='#2f8f4e' stroke-width='2'/><rect x='728' y='8' width='10' height='10' fill='#2f6fb5'/><text x='743' y='17' font-size='11' fill='#3d2817'>Resistance</text><rect x='818' y='8' width='10' height='10' fill='#2f8f4e'/><text x='833' y='17' font-size='11' fill='#3d2817'>Enlightened</text></svg></div>
+    </div>
   </div>
-  <script id="battle-report-meta" type="application/json">{"title":"26-02 Monthly Report","history_display_title":true,"options":{"show_deltas":false},"time_period":{"start":"2026-02-01","end":"2026-02-28","display":"2026: 02-01 to 02-28"},"sectors":["AM03-KILO-07","AM03-KILO-02","AM03-KILO-00","AM03-KILO-15","AM03-KILO-14","AM03-KILO-01"],"statistics":{"active_players":{"enlightened":{"value":325,"percent":"56.1%"},"resistance":{"value":254,"percent":"43.9%"},"total":579,"delta":{"enlightened":325,"resistance":254}},"total_mu":{"enlightened":{"value":8490159,"percent":"35.1%"},"resistance":{"value":15685533,"percent":"64.9%"},"total":24175692,"delta":{"enlightened":8490159,"resistance":15685533}},"portal_captures":{"enlightened":{"value":21755,"percent":"57.3%"},"resistance":{"value":16186,"percent":"42.7%"},"total":37941,"delta":{"enlightened":21755,"resistance":16186}},"enemy_portal_captures":{"enlightened":{"value":6215,"percent":"51.2%"},"resistance":{"value":5916,"percent":"48.8%"},"total":12131,"delta":{"enlightened":6215,"resistance":5916}}},"faction_summary":{"columns":["active_players","total_mu","portal_captures","enemy_captures","enemy_captures_per_player"],"rows":[{"faction":"Enlightened","key":"E","active_players":{"value":325,"delta":325},"total_mu":{"value":8490159,"delta":8490159},"portal_captures":{"value":21755,"delta":21755},"enemy_captures":{"value":6215,"delta":6215},"enemy_captures_per_player":{"value":19.123076923076923,"delta":19.123076923076923}},{"faction":"Resistance","key":"R","active_players":{"value":254,"delta":254},"total_mu":{"value":15685533,"delta":15685533},"portal_captures":{"value":16186,"delta":16186},"enemy_captures":{"value":5916,"delta":5916},"enemy_captures_per_player":{"value":23.291338582677167,"delta":23.291338582677167}}]},"ranking":{"total_mu_total":24175692,"enemy_portal_captures_total":12131,"total_mu":[{"name":"TotoWanderer","team":"R","value":8897162,"percent":"36.8%"},{"name":"biowandwerer","team":"R","value":4534153,"percent":"18.8%"},{"name":"Dazanar","team":"E","value":3464715,"percent":"14.3%"},{"name":"DarthLayer","team":"E","value":2235359,"percent":"9.2%"},{"name":"spyfred","team":"E","value":1051875,"percent":"4.4%"},{"name":"Tr1ggerWarning","team":"R","value":535015,"percent":"2.2%"},{"name":"SnakeDoctorJK","team":"R","value":423473,"percent":"1.8%"},{"name":"kbees1","team":"R","value":330330,"percent":"1.4%"},{"name":"GreekBish","team":"E","value":243082,"percent":"1.0%"},{"name":"Knightsaint","team":"E","value":219786,"percent":"0.9%"}],"enemy_portal_captures":[{"name":"SnakeDoctorJK","team":"R","value":624,"percent":"5.1%"},{"name":"ResGrenadier","team":"R","value":297,"percent":"2.4%"},{"name":"onekm","team":"R","value":275,"percent":"2.3%"},{"name":"Dazanar","team":"E","value":263,"percent":"2.2%"},{"name":"grendelwulf","team":"E","value":257,"percent":"2.1%"},{"name":"D3plorable1","team":"R","value":246,"percent":"2.0%"},{"name":"MalleusVos","team":"E","value":216,"percent":"1.8%"},{"name":"spyfred","team":"E","value":190,"percent":"1.6%"},{"name":"kamilus83","team":"E","value":189,"percent":"1.6%"},{"name":"martinatime","team":"R","value":186,"percent":"1.5%"}],"top_portals":[{"guid":"ecfcab079fef3af885af8337c2d36917","name":"River Reflections","captures":17},{"guid":"703aee00dce2334e9a9b2f6abf057dc9","name":"Big Mill’s Cheesesteaks ice cream cone","captures":15},{"guid":"e186548c45214aa3b1c7c8e4b16575a9","name":"Cross in Sarno","captures":15},{"guid":"8153d8d09b2f326cb37ac5eb7afb82a8","name":"Viera Entry Monument (East)","captures":15},{"guid":"f3f4b32a50b0497cac31e1d54aaa6853","name":"Oviedo On The Park - Mitchell Hammock Entrance","captures":14}]},"history":{"previous_report":null,"weekly_reports":[{"file_name":"battle_report_20260204_to_20260211.html","start":"2026-02-04","end":"2026-02-11","display":"2026: 02-04 to 02-11","title":null},{"file_name":"battle_report_20260126_to_20260203.html","start":"2026-01-26","end":"2026-02-03","display":"2026: 01-26 to 02-03","title":null}],"monthly_reports":[],"reports":[{"file_name":"battle_report_20260204_to_20260211.html","start":"2026-02-04","end":"2026-02-11","display":"2026: 02-04 to 02-11","title":null},{"file_name":"battle_report_20260126_to_20260203.html","start":"2026-01-26","end":"2026-02-03","display":"2026: 01-26 to 02-03","title":null}]},"line_chart":{"dates":["2026-01-30","2026-01-31","2026-02-01","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-07","2026-02-08","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-14","2026-02-15","2026-02-16","2026-02-17","2026-02-18","2026-02-19","2026-02-20","2026-02-21","2026-02-22","2026-02-23","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-02-28"],"resistance":[372,525,328,326,602,248,528,284,671,452,586,607,477,743,803,518,573,1093,862,664,670,367,1165,876,438,451,362,421,385,668],"enlightened":[632,736,584,586,444,389,674,564,825,481,454,520,601,851,1017,1159,1168,871,972,1043,1358,1067,1168,1390,471,458,589,575,759,751]},"generated_file_name":"battle_report_20260201_to_20260228.html"}</script>
+  <script id="battle-report-meta" type="application/json">{"title":"26-02 Monthly Report","history_display_title":true,"options":{"show_deltas":false},"time_period":{"start":"2026-02-01","end":"2026-02-28","display":"2026: 02-01 to 02-28"},"sectors":["AM03-KILO-07","AM03-KILO-02","AM03-KILO-00","AM03-KILO-15","AM03-KILO-14","AM03-KILO-01"],"statistics":{"active_players":{"enlightened":{"value":325,"percent":"56.1%"},"resistance":{"value":254,"percent":"43.9%"},"total":579,"delta":{"enlightened":325,"resistance":254}},"total_mu":{"enlightened":{"value":8490159,"percent":"35.1%"},"resistance":{"value":15685533,"percent":"64.9%"},"total":24175692,"delta":{"enlightened":8490159,"resistance":15685533}},"portal_captures":{"enlightened":{"value":21755,"percent":"57.3%"},"resistance":{"value":16186,"percent":"42.7%"},"total":37941,"delta":{"enlightened":21755,"resistance":16186}},"enemy_portal_captures":{"enlightened":{"value":6215,"percent":"51.2%"},"resistance":{"value":5916,"percent":"48.8%"},"total":12131,"delta":{"enlightened":6215,"resistance":5916}}},"faction_summary":{"columns":["active_players","total_mu","portal_captures","enemy_captures","enemy_captures_per_player"],"rows":[{"faction":"Enlightened","key":"E","active_players":{"value":325,"delta":325},"total_mu":{"value":8490159,"delta":8490159},"portal_captures":{"value":21755,"delta":21755},"enemy_captures":{"value":6215,"delta":6215},"enemy_captures_per_player":{"value":19.123076923076923,"delta":19.123076923076923}},{"faction":"Resistance","key":"R","active_players":{"value":254,"delta":254},"total_mu":{"value":15685533,"delta":15685533},"portal_captures":{"value":16186,"delta":16186},"enemy_captures":{"value":5916,"delta":5916},"enemy_captures_per_player":{"value":23.291338582677167,"delta":23.291338582677167}}]},"ranking":{"total_mu_total":24175692,"enemy_portal_captures_total":12131,"total_mu":[{"name":"TotoWanderer","team":"R","value":8897162,"percent":"36.8%"},{"name":"biowandwerer","team":"R","value":4534153,"percent":"18.8%"},{"name":"Dazanar","team":"E","value":3464715,"percent":"14.3%"},{"name":"DarthLayer","team":"E","value":2235359,"percent":"9.2%"},{"name":"spyfred","team":"E","value":1051875,"percent":"4.4%"},{"name":"Tr1ggerWarning","team":"R","value":535015,"percent":"2.2%"},{"name":"SnakeDoctorJK","team":"R","value":423473,"percent":"1.8%"},{"name":"kbees1","team":"R","value":330330,"percent":"1.4%"},{"name":"GreekBish","team":"E","value":243082,"percent":"1.0%"},{"name":"Knightsaint","team":"E","value":219786,"percent":"0.9%"}],"enemy_portal_captures":[{"name":"SnakeDoctorJK","team":"R","value":624,"percent":"5.1%"},{"name":"ResGrenadier","team":"R","value":297,"percent":"2.4%"},{"name":"onekm","team":"R","value":275,"percent":"2.3%"},{"name":"Dazanar","team":"E","value":263,"percent":"2.2%"},{"name":"grendelwulf","team":"E","value":257,"percent":"2.1%"},{"name":"D3plorable1","team":"R","value":246,"percent":"2.0%"},{"name":"MalleusVos","team":"E","value":216,"percent":"1.8%"},{"name":"spyfred","team":"E","value":190,"percent":"1.6%"},{"name":"kamilus83","team":"E","value":189,"percent":"1.6%"},{"name":"martinatime","team":"R","value":186,"percent":"1.5%"}],"top_portals":[{"guid":"ecfcab079fef3af885af8337c2d36917","name":"River Reflections","captures":17},{"guid":"703aee00dce2334e9a9b2f6abf057dc9","name":"Big Mill’s Cheesesteaks ice cream cone","captures":15},{"guid":"e186548c45214aa3b1c7c8e4b16575a9","name":"Cross in Sarno","captures":15},{"guid":"8153d8d09b2f326cb37ac5eb7afb82a8","name":"Viera Entry Monument (East)","captures":15},{"guid":"f3f4b32a50b0497cac31e1d54aaa6853","name":"Oviedo On The Park - Mitchell Hammock Entrance","captures":14}]},"history":{"previous_report":null,"weekly_reports":[{"file_name":"battle_report_20260204_to_20260211.html","start":"2026-02-04","end":"2026-02-11","display":"2026: 02-04 to 02-11","title":null},{"file_name":"battle_report_20260126_to_20260203.html","start":"2026-01-26","end":"2026-02-03","display":"2026: 01-26 to 02-03","title":null}],"monthly_reports":[],"reports":[{"file_name":"battle_report_20260204_to_20260211.html","start":"2026-02-04","end":"2026-02-11","display":"2026: 02-04 to 02-11","title":null},{"file_name":"battle_report_20260126_to_20260203.html","start":"2026-01-26","end":"2026-02-03","display":"2026: 01-26 to 02-03","title":null}]},"line_chart":{"dates":["2026-01-30","2026-01-31","2026-02-01","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-07","2026-02-08","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-14","2026-02-15","2026-02-16","2026-02-17","2026-02-18","2026-02-19","2026-02-20","2026-02-21","2026-02-22","2026-02-23","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-02-28"],"resistance":[372,525,328,326,602,248,528,284,671,452,586,607,477,743,803,518,573,1093,862,664,670,367,1165,876,438,451,362,421,385,668],"enlightened":[632,736,584,586,444,389,674,564,825,481,454,520,601,851,1017,1159,1168,871,972,1043,1358,1067,1168,1390,471,458,589,575,759,751]},"generated_file_name":"battle_report_20260201_to_20260228.html","effective_title":"26-02 Monthly Report","intro_text":null,"edition":{"volume":1,"issue":3}}</script>
 </body>
 </html>
