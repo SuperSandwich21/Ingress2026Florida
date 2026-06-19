@@ -1,10 +1,6 @@
 @echo off
-cd /d "D:\Outer System\Ingress\IngressWeekly"
+cd /d "D:\Outer System\Ingress\Ingress2026Florida"
 
-echo ---- Git Status ----
-git status
-
-echo.
 echo ---- Adding Files ----
 git add .
 
@@ -13,8 +9,12 @@ echo ---- Commit ----
 git commit -m "Update weekly report"
 
 echo.
+echo ---- Pull latest from GitHub ----
+git pull --rebase origin main
+
+echo.
 echo ---- Push ----
-git push
+git push origin main
 
 echo.
 echo Done.
